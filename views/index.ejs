@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Home</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+  <div class="container">
+    <h1>Presidents</h1>
+    <div class="row">
+    <% presidents.forEach((president) => { %>
+    <div class="col">
+    
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="<%= president.imgUrl %>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= president.name %></h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="/presidents/<%= president.order %>" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+  <form action='/presidents' method="POST">
+    <h2>Enter New President (Democracy be Damned)</h2>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" name="name" value="Thomas Jefferson">
+      <small id="emailHelp" class="form-text text-muted">Be sure to include middle names or initials as necessary (e.g. John <em>Quincy</em> Adams)</small>
+    </div>
+    <div class="form-group">
+      <label for="order">Order</label>
+      <input type="number" class="form-control"
+      name="order" id="order" placeholder="Order" value="3">
+    </div>
+
+    <div class="form-group">
+      <label for="party">Party</label>
+      <select class="form-control" id="party" name='party'>
+        <option>None</option>
+        <option>Federalist</option>
+        <option>Democrat-Republican</option>
+        <option>Democrat</option>
+        <option>Republican</option>
+        <option>Whig</option>
+        <option>Independent</option>
+      </select>
+      </div>
+    <div class="form-group">
+      <label for="imgUrl">Image Url</label>
+      <input type="text" class="form-control" id="imgUrl" name="imgUrl" value="https://i.ytimg.com/vi/9OBn7lCWtM8/maxresdefault.jpg">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  </div>
+</body>
+</html>
